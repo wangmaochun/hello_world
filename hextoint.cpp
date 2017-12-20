@@ -82,3 +82,25 @@ int main(){
     printf("%lld",answer);  
     return 0;  
 }
+
+
+-------
+	
+//十六进制转十进制 
+#include<stdio.h>
+int main(){
+	char s[50];
+	scanf("%s",s);
+	int t;
+	long sum=0;
+	for(int i=0;s[i];i++){
+		if(s[i]<='9')
+		t=s[i]-'0';
+		else
+		t=s[i]-'A'+10;
+		sum=sum*16+t;
+	}
+	
+	printf("%ld\n",sum);
+	return 0;		
+} 
