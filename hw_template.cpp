@@ -66,6 +66,13 @@ for(ita=v1.begin();ita != v1.end();ita++)
 
 附：一个标准的操作代码
 #include <iostream>
+#include <string>
+#include <vector>
+#include <list>
+#include <map>
+#include <cstdlib>
+#include<cstdio> 
+#include<memory>
 using namespace std;
 
 //冒泡排序
@@ -96,12 +103,53 @@ void printArr(int a[], int n)
 	cout << endl;
 }
 
+void printVec(vector<int> L)
+{
+	vector<int>::iterator it;
+	for (it = L.begin(); it != L.end(); it++)
+		cout << *it << " ";
+	cout << endl;
+}
+
+int FirstNotRepeatingChar(string str) {
+	if (str.empty()) return -1;
+
+	map<char, int> mp;
+	for (int i = 0; i < str.size(); ++i)
+	{
+		mp[str[i]]++;//以每个字符为键值，进行计数
+	}
+	for (int i = 0; i < str.size(); ++i)
+	{
+		if (mp[str[i]] == 1)
+			return i; //返回第一个只出现1次的索引
+	}
+	return -1;
+}
 int main()
 {
+	//测试一维数组
 	int arr[] = { 2, 3, 4, 1, 7 };
 	int count = sizeof(arr) / sizeof(arr[0]);
 	bubbleSort(arr, count);
-	printArr(arr, count);
+	//printArr(arr, count);
+
+	//测试vector
+	vector<int> vec;
+	vec.push_back(1);
+	vec.push_back(2);
+	vec.push_back(3);
+	vec.pop_back();
+	cout << vec.size() << endl;
+	printVec(vec);
+
+	//测试map
+	string str = "goole";
+	str += 'hhhh';
+	cout << FirstNotRepeatingChar(str) << endl;
+
+
+
 	//cout << count << endl;
 	return 0;
 }
